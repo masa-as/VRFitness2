@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.08
+  startMarker: {fileID: 2626228945911399367, guid: 7a23a824f8e66b8438b3c641ce107d92, type: 3}
+  endMarker: {fileID: 9088140016831297424, guid: acdfcde091a9e1d4388d15f8a34fc1ad, type: 3}
 --- !u!54 &-296074674011565877
 Rigidbody:
   m_ObjectHideFlags: 0
