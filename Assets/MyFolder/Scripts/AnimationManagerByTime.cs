@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class AnimationManagerByTime : MonoBehaviour
 {
-    public float elapsedTime;
+    private float elapsedTime;
     private Animator animator;
 
 
@@ -18,7 +18,7 @@ public class AnimationManagerByTime : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
 
-        if (elapsedTime < 3f
+        if (elapsedTime < 6f
             && !animator.GetCurrentAnimatorStateInfo(0).IsName("Jab")
             && !animator.IsInTransition(0)
         )
@@ -31,7 +31,7 @@ public class AnimationManagerByTime : MonoBehaviour
                 animator.SetTrigger("Jab");
             }
         }
-        if (3f < elapsedTime && elapsedTime < 6f
+        if (6f < elapsedTime && elapsedTime < 12f
             && !animator.GetCurrentAnimatorStateInfo(0).IsName("Straight")
             && !animator.IsInTransition(0)
         )
@@ -42,7 +42,7 @@ public class AnimationManagerByTime : MonoBehaviour
                 animator.SetTrigger("Straight");
             }
         }
-        if (6f < elapsedTime && elapsedTime < 9f
+        if (12f < elapsedTime
             && !animator.GetCurrentAnimatorStateInfo(0).IsName("OneTwo")
             && !animator.IsInTransition(0)
         )
@@ -52,9 +52,9 @@ public class AnimationManagerByTime : MonoBehaviour
                 animator.SetTrigger("OneTwo");
             }
         }
-        // if (11.5f < elapsedTime)
-        // {
-        //     SceneManager.LoadScene("Result");
-        // }
+        if (15f < elapsedTime)
+        {
+            SceneManager.LoadScene("Result");
+        }
     }
 }

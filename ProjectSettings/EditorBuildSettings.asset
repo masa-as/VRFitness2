@@ -11,9 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MyFolder/Scenes/Menu.unity
     guid: 0c7b5a4b46a0f87449f9812766f2e2ef
-  - enabled: 0
+  - enabled: 1
     path: Assets/MyFolder/Scenes/Daily.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: f4b4a12ebc275ae4c90eeacab24ca76c
   - enabled: 1
     path: Assets/MyFolder/Scenes/not_edit/Config.unity
     guid: fbc175a6b14ee96478cd8997774b4221
