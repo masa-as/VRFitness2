@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class SlideMusicBox : MonoBehaviour
 {
-    GameObject obj;
+    GameObject obj_R;
+    GameObject obj_L;
     [SerializeField] public float speed = 0.08f;
 
 
     void Start()
     {
-        obj = (GameObject)Resources.Load("Explosion7");
+        obj_R = (GameObject)Resources.Load("Broken_Cube_Right");
+        obj_L = (GameObject)Resources.Load("Broken_Cube_Left");
     }
 
     // Update is called once per frame
@@ -18,18 +20,22 @@ public class SlideMusicBox : MonoBehaviour
     {
 
         transform.Translate(0, 0, speed);
-        if (transform.position.z >= 5)
+        if (transform.position.z >= 6)
         {
             Destroy(gameObject);
         }
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Player")
+        Debug.Log("当たった!");
+        if (gameObject.tag == "Right")
         {
-            Debug.Log("当たった!");
-            Instantiate(obj, gameObject.transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Instantiate(obj_R, gameObject.transform.position, Quaternion.identity);
         }
+        else if (gameObject.tag == "Left")
+        {
+            Instantiate(obj_L, gameObject.transform.position, Quaternion.identity);
+        }
+        Destroy(gameObject);
     }
 }

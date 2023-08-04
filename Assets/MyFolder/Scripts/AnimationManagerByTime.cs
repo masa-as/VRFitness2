@@ -3,8 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class AnimationManagerByTime : MonoBehaviour
 {
-    GameObject timer;
-    TimerScript timerScript;
+    public float elapsedTime;
     private Animator animator;
 
 
@@ -12,14 +11,14 @@ public class AnimationManagerByTime : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        timer = GameObject.Find("Timer");
-        timerScript = timer.GetComponent<TimerScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timerScript.elapsedTime < 3f
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime < 3f
             && !animator.GetCurrentAnimatorStateInfo(0).IsName("Jab")
             && !animator.IsInTransition(0)
         )
@@ -32,7 +31,7 @@ public class AnimationManagerByTime : MonoBehaviour
                 animator.SetTrigger("Jab");
             }
         }
-        if (3f < timerScript.elapsedTime && timerScript.elapsedTime < 6f
+        if (3f < elapsedTime && elapsedTime < 6f
             && !animator.GetCurrentAnimatorStateInfo(0).IsName("Straight")
             && !animator.IsInTransition(0)
         )
@@ -43,7 +42,7 @@ public class AnimationManagerByTime : MonoBehaviour
                 animator.SetTrigger("Straight");
             }
         }
-        if (6f < timerScript.elapsedTime && timerScript.elapsedTime < 9f
+        if (6f < elapsedTime && elapsedTime < 9f
             && !animator.GetCurrentAnimatorStateInfo(0).IsName("OneTwo")
             && !animator.IsInTransition(0)
         )
@@ -53,7 +52,7 @@ public class AnimationManagerByTime : MonoBehaviour
                 animator.SetTrigger("OneTwo");
             }
         }
-        // if (11.5f < timerScript.elapsedTime)
+        // if (11.5f < elapsedTime)
         // {
         //     SceneManager.LoadScene("Result");
         // }
