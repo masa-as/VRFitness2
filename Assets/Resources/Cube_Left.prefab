@@ -119,9 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff323a446b1cc3d4b863028f183728ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.08
-  startMarker: {fileID: 2626228945911399367, guid: 7a23a824f8e66b8438b3c641ce107d92, type: 3}
-  endMarker: {fileID: 9088140016831297424, guid: acdfcde091a9e1d4388d15f8a34fc1ad, type: 3}
+  StartMarker: {fileID: 2626228945911399367, guid: 7a23a824f8e66b8438b3c641ce107d92, type: 3}
+  StartOut: {fileID: 8785382311248295636, guid: 2f8e5c94420b0484596ff902a4ed913a, type: 3}
+  StartOut2: {fileID: 8785382311248295636, guid: ecfeef2befb97b14daf3903b2d9f6d4a, type: 3}
+  End: {fileID: 5238998257995569466, guid: ec47355dab51fff4d8e2ad310c9cd2ae, type: 3}
+  path: []
+  path2: []
 --- !u!54 &39921533186977736
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxingGlove_Right
       objectReference: {fileID: 0}
+    - target: {fileID: 4951177100429167340, guid: 86340cfcc89bde6449323bd75b08e914, type: 3}
+      propertyPath: m_TagString
+      value: Right
+      objectReference: {fileID: 0}
     - target: {fileID: 4951177100429530828, guid: 86340cfcc89bde6449323bd75b08e914, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -182,7 +186,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4951177100429167340, guid: 86340cfcc89bde6449323bd75b08e914, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 932287329}
   m_SourcePrefab: {fileID: 100100000, guid: 86340cfcc89bde6449323bd75b08e914, type: 3}
 --- !u!4 &11627928 stripped
 Transform:
@@ -351,10 +358,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxingGlove_Left
       objectReference: {fileID: 0}
+    - target: {fileID: 1371345253234485325, guid: ddd2134c78310d043a6710a2c126ffdd, type: 3}
+      propertyPath: m_TagString
+      value: Left
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1371345253234485325, guid: ddd2134c78310d043a6710a2c126ffdd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1893145755}
   m_SourcePrefab: {fileID: 100100000, guid: ddd2134c78310d043a6710a2c126ffdd, type: 3}
 --- !u!4 &64212129 stripped
 Transform:
@@ -560,6 +574,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &932287324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4951177100429167340, guid: 86340cfcc89bde6449323bd75b08e914, type: 3}
+  m_PrefabInstance: {fileID: 11627927}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &932287329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932287324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e7d4bb018916a4abbc1dc509d990d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -885,6 +916,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08008d7c75d747e4b840ffa8d6064737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1893145750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1371345253234485325, guid: ddd2134c78310d043a6710a2c126ffdd, type: 3}
+  m_PrefabInstance: {fileID: 64212128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1893145755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893145750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e7d4bb018916a4abbc1dc509d990d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1970172700
