@@ -9,22 +9,19 @@ public class SlideMusicBox : MonoBehaviour
     GameObject obj_L;
 
     public GameObject StartMarker, StartOut, StartOut2, End;
-
-
     public Vector3[] path;
     public Vector3[] path2;
 
     void Start()
     {
-        obj_R = (GameObject)Resources.Load("Broken_Cube_Right");
         obj_L = (GameObject)Resources.Load("Broken_Cube_Left");
+        obj_R = (GameObject)Resources.Load("Broken_Cube_Right");
 
         Vector3[] path_L = new Vector3[]
         {
             StartMarker.transform.position,
             StartOut.transform.position,
             End.transform.position
-            // new Vector3(2, 1, 2.5f),new Vector3(0,1,6)
         };
 
         Vector3[] path_R = new Vector3[]
@@ -32,7 +29,6 @@ public class SlideMusicBox : MonoBehaviour
             StartMarker.transform.position,
             StartOut2.transform.position,
             End.transform.position
-            // new Vector3(2, 1, 2.5f),new Vector3(0,1,6)
         };
 
         if (gameObject.tag == "Right")
@@ -58,10 +54,7 @@ public class SlideMusicBox : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        // float present_Location = (Time.time * speed) / distance_two;
-        // transform.Translate(0, 0, speed);
-        // transform.position = Vector3.Slerp(new Vector3(0,1,0), new Vector3(0,1,5.5f), 10.0f);
-        if (transform.position.z >= 5.5f)
+        if (transform.position.z >= 7.5f)
         {
             Destroy(gameObject);
         }
@@ -81,24 +74,15 @@ public class SlideMusicBox : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("当たった!");
-        if (gameObject.tag == "Right")
-        {
-            Instantiate(obj_R, gameObject.transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
-        else if (gameObject.tag == "Left")
+        if (gameObject.tag == "Left")
         {
             Instantiate(obj_L, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        // if (collision.gameObject.tag == "Right")
-        // {
-        //     StartCoroutine(Vibrate(duration: 0.02f, controller: OVRInput.Controller.RTouch));
-        // }
-        // else if (collision.gameObject.tag == "Left")
-        // {
-        //     StartCoroutine(Vibrate(duration: 0.03f, controller: OVRInput.Controller.LTouch));
-        // }
+        else if (gameObject.tag == "Right")
+        {
+            Instantiate(obj_R, gameObject.transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }
