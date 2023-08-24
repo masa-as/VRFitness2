@@ -41,7 +41,7 @@ public class SlideMusicBox : MonoBehaviour
                         .OnComplete(() => transform.DOPath(
                             path_after,
                             1f,
-                            PathType.Linear));
+                            PathType.Linear).SetLink(gameObject));
         }
         else if (gameObject.tag == "Left")
         {
@@ -54,7 +54,7 @@ public class SlideMusicBox : MonoBehaviour
                         .OnComplete(() => transform.DOPath(
                             path_after,
                             1f,
-                            PathType.Linear));
+                            PathType.Linear).SetLink(gameObject));
         }
     }
 
