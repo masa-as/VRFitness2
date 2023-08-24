@@ -5,17 +5,10 @@ using DG.Tweening;
 
 public class SlideMusicBox : MonoBehaviour
 {
-    GameObject obj_R;
-    GameObject obj_L;
-
-    public GameObject StartMarker, StartOut, StartOut2, End;
-    public Vector3[] path;
-    public Vector3[] path2;
+    public GameObject StartMarker, StartOut, StartOut2, End, End2;
 
     void Start()
     {
-        obj_L = (GameObject)Resources.Load("Broken_Cube_Left");
-        obj_R = (GameObject)Resources.Load("Broken_Cube_Right");
 
         Vector3[] path_L = new Vector3[]
         {
@@ -31,6 +24,12 @@ public class SlideMusicBox : MonoBehaviour
             End.transform.position
         };
 
+        Vector3[] path_after = new Vector3[]
+        {
+            End.transform.position,
+            End2.transform.position
+        };
+
         if (gameObject.tag == "Right")
         {
             transform.DOPath(
@@ -38,7 +37,11 @@ public class SlideMusicBox : MonoBehaviour
                     5f,
                     PathType.CatmullRom)
                         .SetLookAt(0.05f, Vector3.forward)
-                        .SetLink(gameObject);
+                        .SetLink(gameObject)
+                        .OnComplete(() => transform.DOPath(
+                            path_after,
+                            1f,
+                            PathType.Linear));
         }
         else if (gameObject.tag == "Left")
         {
@@ -47,7 +50,11 @@ public class SlideMusicBox : MonoBehaviour
                     5f,
                     PathType.CatmullRom)
                         .SetLookAt(0.05f, Vector3.forward)
-                        .SetLink(gameObject);
+                        .SetLink(gameObject)
+                        .OnComplete(() => transform.DOPath(
+                            path_after,
+                            1f,
+                            PathType.Linear));
         }
     }
 
@@ -56,32 +63,6 @@ public class SlideMusicBox : MonoBehaviour
     {
         if (transform.position.z >= 7.5f)
         {
-            Destroy(gameObject);
-        }
-    }
-
-    public static IEnumerator Vibrate(float duration = 0.1f, float frequency = 0.1f, float amplitude = 0.1f, OVRInput.Controller controller = OVRInput.Controller.Active)
-    {
-        //コントローラーを振動させる
-        OVRInput.SetControllerVibration(frequency, amplitude, controller);
-
-        //指定された時間待つ
-        yield return new WaitForSeconds(duration);
-
-        //コントローラーの振動を止める
-        OVRInput.SetControllerVibration(0, 0, controller);
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (gameObject.tag == "Left")
-        {
-            Instantiate(obj_L, gameObject.transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
-        else if (gameObject.tag == "Right")
-        {
-            Instantiate(obj_R, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

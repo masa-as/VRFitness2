@@ -123,8 +123,7 @@ MonoBehaviour:
   StartOut: {fileID: 8785382311248295636, guid: 2f8e5c94420b0484596ff902a4ed913a, type: 3}
   StartOut2: {fileID: 8785382311248295636, guid: ecfeef2befb97b14daf3903b2d9f6d4a, type: 3}
   End: {fileID: 5238998257995569466, guid: ec47355dab51fff4d8e2ad310c9cd2ae, type: 3}
-  path: []
-  path2: []
+  End2: {fileID: 5238998257995569466, guid: 656a157a216214346839782e5ab76ea2, type: 3}
 --- !u!54 &-296074674011565877
 Rigidbody:
   m_ObjectHideFlags: 0

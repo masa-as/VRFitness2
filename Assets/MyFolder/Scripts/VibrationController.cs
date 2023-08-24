@@ -18,11 +18,11 @@ public class VibrationController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (gameObject.tag == "Right")
+        if (gameObject.tag == "HandRight")
         {
             StartCoroutine(Vibrate(duration: 0.3f, controller: OVRInput.Controller.RTouch));
         }
-        else if (gameObject.tag == "Left")
+        else if (gameObject.tag == "HandLeft")
         {
             StartCoroutine(Vibrate(duration: 0.3f, controller: OVRInput.Controller.LTouch));
         }

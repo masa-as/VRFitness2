@@ -7,6 +7,8 @@ TagManager:
   - Hand
   - Right
   - Left
+  - HandLeft
+  - HandRight
   layers:
   - Default
   - TransparentFX

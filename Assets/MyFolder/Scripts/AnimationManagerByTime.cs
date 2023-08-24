@@ -1,16 +1,21 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class AnimationManagerByTime : MonoBehaviour
 {
     private float elapsedTime;
     private Animator animator;
 
+    public GameObject unitychan;
 
+    private Vector3 worldAngle;
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        unitychan = GameObject.Find("unitychan");
+        worldAngle = unitychan.transform.eulerAngles;
     }
 
     // Update is called once per frame
@@ -18,16 +23,21 @@ public class AnimationManagerByTime : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
 
-        if (elapsedTime < 6f
-            && !animator.GetCurrentAnimatorStateInfo(0).IsName("Jab")
+        if (elapsedTime < 3f)
+        {
+            {
+                animator.SetTrigger("Idle");
+            }
+        }
+        if (3f < elapsedTime && elapsedTime < 6f
+            && !animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")
             && !animator.IsInTransition(0)
         )
         {
             {
-                Debug.Log(Time.deltaTime);
-                Debug.Log("ss");
-                // transform.Translate(0f, 0f, 0.1f);
-                // transform.Translate(0f, 0f, Time.deltaTime * 2.31f);
+                transform.DORotate(new Vector3(0, 77, 0), 1f);
+                // worldAngle.y = 77;
+                // unitychan.transform.eulerAngles = worldAngle;
                 animator.SetTrigger("Jab");
             }
         }
@@ -37,8 +47,9 @@ public class AnimationManagerByTime : MonoBehaviour
         )
         {
             {
-                Debug.Log(Time.deltaTime);
-                // transform.Translate(0f, 0f, Time.deltaTime * -0.21f);
+                transform.DORotate(new Vector3(0, 0, 0), 1f);
+                // worldAngle.y = 0;
+                // unitychan.transform.eulerAngles = worldAngle;
                 animator.SetTrigger("Straight");
             }
         }
@@ -48,13 +59,12 @@ public class AnimationManagerByTime : MonoBehaviour
         )
         {
             {
-                // transform.Translate(0f, 0f, Time.deltaTime * -0.01f);
                 animator.SetTrigger("OneTwo");
             }
         }
-        if (15f < elapsedTime)
-        {
-            SceneManager.LoadScene("Result");
-        }
+        // if (15f < elapsedTime)
+        // {
+        //     SceneManager.LoadScene("Result");
+        // }
     }
 }
