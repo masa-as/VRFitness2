@@ -7,8 +7,6 @@ public class CollisionDetection : MonoBehaviour
     GameObject obj_R;
     GameObject obj_L;
 
-    public static bool out_flag = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +17,18 @@ public class CollisionDetection : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "HandLeft" || collision.gameObject.tag == "HandRight")
         {
-            out_flag = true;
+            if (transform.parent.gameObject.tag == "Left")
+            {
+                Instantiate(obj_L, gameObject.transform.position, Quaternion.identity);
+                Destroy(transform.parent.gameObject);
+            }
+            else if (transform.parent.gameObject.tag == "Right")
+            {
+                Instantiate(obj_R, gameObject.transform.position, Quaternion.identity);
+                Destroy(transform.parent.gameObject);
+            }
         }
     }
 }
