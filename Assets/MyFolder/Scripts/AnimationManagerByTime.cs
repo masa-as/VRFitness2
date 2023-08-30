@@ -4,7 +4,6 @@ using DG.Tweening;
 
 public class AnimationManagerByTime : MonoBehaviour
 {
-    private float elapsedTime;
     private Animator animator;
 
     public GameObject unitychan;
@@ -21,8 +20,7 @@ public class AnimationManagerByTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-
+        float elapsedTime = GameManager._elapsedTime;
         if (elapsedTime < 3f)
         {
             {

@@ -1,56 +1,44 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class VoiceManager : MonoBehaviour
 {
-    GameObject obj;
-    // private float _repeatSpan = 1;    //繰り返す間隔
-    public static float _elapsedTime = 10;   //経過時間
-
     [SerializeField]
     private string _csvPath;
-    private List<Note> _notes = new List<Note>();
 
     private int _noteID = 0;
 
+    private List<Note> _notes = new List<Note>();
+
     //レーンごとに飛ばすオブジェクトを変えるので、その分保持
     [SerializeField]
-    private GameObject[] _items;
-
-    //楽曲再生用、一番大事
-    private AudioSource _source;
 
     //プレイしてるかどうかの確認
     private bool _isPlaying = true;
 
+    public List<AudioClip> voices = new List<AudioClip>();
+
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         Load();
+        audioSource = GetComponent<AudioSource>();
     }
 
-
-
-    // Update is called once per frame    
-    private void FixedUpdate()
-    {
-        _elapsedTime += Time.deltaTime;     //時間をカウントする
-    }
 
     void Update()
     {
-        if (_isPlaying)
-        {
-            SearchNote();
-        }
+        SearchNote();
     }
 
     private void SearchNote()
     {
+        float elapsedTime = GameManager._elapsedTime;
         // Debug.Log(_notes.Count);
         // Debug.Log(_noteID);
         // Debug.Log(_elapsedTime);
@@ -62,9 +50,9 @@ public class GameManager : MonoBehaviour
              * アニメーションする用のオフセット分を引いて早めに生成する
              * 規模が大きくなった時のために時間は他の場所で管理するのがいい
              */
-            if (_notes[_noteID].Timing < _elapsedTime)
+            if (_notes[_noteID].Timing + 3.5f < elapsedTime)
             {
-                GenerateNote(_notes[_noteID]);
+                audioSource.PlayOneShot(voices[_notes[_noteID].Lane]);
                 _noteID++;
             }
         }
@@ -73,16 +61,6 @@ public class GameManager : MonoBehaviour
             GameEnd();
             _isPlaying = false;
         }
-    }
-
-    /// <summary>
-    /// ノーツを生成する
-    /// </summary>
-    /// <param name="note">該当ノーツクラスを転送してくる</param>
-    private void GenerateNote(Note note)
-    {
-        //生成と同時に初期化
-        var g = Instantiate(_items[note.Lane]);
     }
 
     private void GameEnd()
