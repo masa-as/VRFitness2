@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private string _csvPath;
-    private List<Note> _notes = new List<Note>();
+    public static List<Note> _notes = new List<Note>();
 
     private int _noteID = 0;
 

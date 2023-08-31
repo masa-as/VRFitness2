@@ -8,9 +8,6 @@ using System.IO;
 
 public class AnimationManagerByTime : MonoBehaviour
 {
-    [SerializeField]
-    private string _csvPath;
-
     private int _noteID = 0;
 
     private List<Note> _notes = new List<Note>();
@@ -26,7 +23,7 @@ public class AnimationManagerByTime : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         unitychan = GameObject.Find("unitychan");
-        Load();
+        _notes = GameManager._notes;
     }
 
     // Update is called once per frame
@@ -53,7 +50,7 @@ public class AnimationManagerByTime : MonoBehaviour
              * アニメーションする用のオフセット分を引いて早めに生成する
              * 規模が大きくなった時のために時間は他の場所で管理するのがいい
              */
-            if (_notes[_noteID].Timing + 3.5f < elapsedTime)
+            if (_notes[_noteID].Timing + 4.0f < elapsedTime)
             {
                 Debug.Log(_notes[_noteID].Lane);
                 switch (_notes[_noteID].Lane)
@@ -88,32 +85,5 @@ public class AnimationManagerByTime : MonoBehaviour
     {
         //無駄にノーツ探索させないためにフラグをたたむ
         _isPlaying = false;
-    }
-
-    private void Load()
-    {
-        //譜面データの中身を引っ張ってくる
-        var csv = Resources.Load(_csvPath) as TextAsset;
-        var reader = new StringReader(csv.text);
-
-        //ロード
-        while (reader.Peek() > -1)
-        {
-            /* 譜面データの中身は1行が1ノーツ
-             * 1列目がタイミング情報
-             * 2列めがレーン情報
-             * ノーツを新規宣言してそれぞれデータを入れたあとに
-             * ノーツリストに追加してループを出る
-             */
-            string row = reader.ReadLine();
-            string[] values = row.Split(',');
-            var n = new Note();
-            n.Timing = float.Parse(values[0]);
-            n.Lane = int.Parse(values[1]);
-
-            _notes.Add(n);
-
-        }
-        Debug.Log(_notes.Count);
     }
 }
