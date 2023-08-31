@@ -26,7 +26,6 @@ public class VoiceManager : MonoBehaviour
         Load();
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot(voices[7]);
-
     }
 
 
@@ -41,9 +40,7 @@ public class VoiceManager : MonoBehaviour
     private void SearchNote()
     {
         float elapsedTime = GameManager._elapsedTime;
-        // Debug.Log(_notes.Count);
-        // Debug.Log(_noteID);
-        // Debug.Log(_elapsedTime);
+
         //ノーツを最後まで生成したらゲーム終了
         if (_noteID < _notes.Count)
         {
