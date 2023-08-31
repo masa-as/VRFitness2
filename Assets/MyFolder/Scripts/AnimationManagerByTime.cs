@@ -21,37 +21,37 @@ public class AnimationManagerByTime : MonoBehaviour
     void Update()
     {
         float elapsedTime = GameManager._elapsedTime;
-        if (elapsedTime < 3f)
+        if (elapsedTime < 16f)
         {
             {
                 animator.SetTrigger("Idle");
             }
         }
-        if (3f < elapsedTime && elapsedTime < 6f
-            && !animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")
-            && !animator.IsInTransition(0)
-        )
-        {
-            {
-                transform.DORotate(new Vector3(0, 77, 0), 1f);
-                // worldAngle.y = 77;
-                // unitychan.transform.eulerAngles = worldAngle;
-                animator.SetTrigger("Jab");
-            }
-        }
-        if (6f < elapsedTime && elapsedTime < 12f
-            && !animator.GetCurrentAnimatorStateInfo(0).IsName("Straight")
-            && !animator.IsInTransition(0)
-        )
-        {
-            {
-                transform.DORotate(new Vector3(0, 0, 0), 1f);
-                // worldAngle.y = 0;
-                // unitychan.transform.eulerAngles = worldAngle;
-                animator.SetTrigger("Straight");
-            }
-        }
-        if (12f < elapsedTime
+        // if (3f < elapsedTime && elapsedTime < 6f
+        //     && !animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")
+        //     && !animator.IsInTransition(0)
+        // )
+        // {
+        //     {
+        //         transform.DORotate(new Vector3(0, 77, 0), 1f);
+        //         // worldAngle.y = 77;
+        //         // unitychan.transform.eulerAngles = worldAngle;
+        //         animator.SetTrigger("Jab");
+        //     }
+        // }
+        // if (6f < elapsedTime && elapsedTime < 12f
+        //     && !animator.GetCurrentAnimatorStateInfo(0).IsName("Straight")
+        //     && !animator.IsInTransition(0)
+        // )
+        // {
+        //     {
+        //         transform.DORotate(new Vector3(0, 0, 0), 1f);
+        //         // worldAngle.y = 0;
+        //         // unitychan.transform.eulerAngles = worldAngle;
+        //         animator.SetTrigger("Straight");
+        //     }
+        // }
+        if (16f < elapsedTime
             && !animator.GetCurrentAnimatorStateInfo(0).IsName("OneTwo")
             && !animator.IsInTransition(0)
         )

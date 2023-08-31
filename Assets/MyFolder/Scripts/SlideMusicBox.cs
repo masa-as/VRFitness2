@@ -36,6 +36,7 @@ public class SlideMusicBox : MonoBehaviour
                     path_R,
                     5f,
                     PathType.CatmullRom)
+                        .SetEase(Ease.Linear)
                         .SetLookAt(0.05f, Vector3.forward)
                         .SetLink(gameObject)
                         .OnComplete(() => transform.DOPath(
@@ -49,6 +50,7 @@ public class SlideMusicBox : MonoBehaviour
                     path_L,
                     5f,
                     PathType.CatmullRom)
+                        .SetEase(Ease.Linear)
                         .SetLookAt(0.05f, Vector3.forward)
                         .SetLink(gameObject)
                         .OnComplete(() => transform.DOPath(

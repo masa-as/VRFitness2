@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     GameObject obj;
     // private float _repeatSpan = 1;    //繰り返す間隔
-    public static float _elapsedTime = 10;   //経過時間
+    [SerializeField] public static float _elapsedTime = 0;   //経過時間
 
     [SerializeField]
     private string _csvPath;
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         //指定された時間待つ
         yield return new WaitForSeconds(8f);
 
-        SceneManager.LoadScene("Result");
+        // SceneManager.LoadScene("Result");
     }
 
     private void Load()

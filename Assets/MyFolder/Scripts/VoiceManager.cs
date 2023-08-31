@@ -13,9 +13,6 @@ public class VoiceManager : MonoBehaviour
 
     private List<Note> _notes = new List<Note>();
 
-    //レーンごとに飛ばすオブジェクトを変えるので、その分保持
-    [SerializeField]
-
     //プレイしてるかどうかの確認
     private bool _isPlaying = true;
 
@@ -28,12 +25,17 @@ public class VoiceManager : MonoBehaviour
     {
         Load();
         audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(voices[7]);
+
     }
 
 
     void Update()
     {
-        SearchNote();
+        if (_isPlaying)
+        {
+            SearchNote();
+        }
     }
 
     private void SearchNote()
@@ -67,15 +69,15 @@ public class VoiceManager : MonoBehaviour
     {
         //無駄にノーツ探索させないためにフラグをたたむ
         _isPlaying = false;
-        StartCoroutine(GoResult());
+        StartCoroutine(FinishVoice());
     }
 
-    public static IEnumerator GoResult()
+    public IEnumerator FinishVoice()
     {
         //指定された時間待つ
-        yield return new WaitForSeconds(8f);
-
-        SceneManager.LoadScene("Result");
+        yield return new WaitForSeconds(2f);
+        Debug.Log("voice");
+        audioSource.PlayOneShot(voices[6]);
     }
 
     private void Load()
